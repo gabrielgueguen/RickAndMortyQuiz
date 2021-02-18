@@ -15,4 +15,4 @@
 * Meaningful names used throughout the code;  
 * No hardcoded resources, use resource files.
 
-## * Images, questions, and answeres were provided in order to build the project.
+## **Images, questions, and answeres were provided in order to build the project.
