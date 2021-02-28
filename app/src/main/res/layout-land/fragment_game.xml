@@ -17,12 +17,14 @@
 
         <ImageView
             android:id="@+id/game_image"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/game_image_height"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:contentDescription="@string/game_image_description"
             android:scaleType="centerCrop"
             android:src="@drawable/rnm02"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/gameScrollView"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -30,13 +32,11 @@
             android:id="@+id/gameScrollView"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="20dp"
             app:layout_constraintBottom_toTopOf="@+id/game_true_button"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/game_image">
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/game_image"
+            app:layout_constraintTop_toTopOf="parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -61,10 +61,10 @@
             android:contentDescription="@string/game_correct_image_description"
             android:src="@drawable/right_24"
             android:visibility="@{(gameViewModel.attempted &amp;&amp; gameViewModel.isCorrect == true) ? View.VISIBLE : View.INVISIBLE}"
-            app:layout_constraintBottom_toBottomOf="@+id/gameScrollView"
-            app:layout_constraintEnd_toEndOf="@+id/gameScrollView"
-            app:layout_constraintStart_toStartOf="@+id/gameScrollView"
-            app:layout_constraintTop_toTopOf="@+id/gameScrollView" />
+            app:layout_constraintBottom_toBottomOf="@+id/game_incorrect_image"
+            app:layout_constraintEnd_toEndOf="@+id/game_incorrect_image"
+            app:layout_constraintStart_toStartOf="@+id/game_incorrect_image"
+            app:layout_constraintTop_toTopOf="@+id/game_incorrect_image" />
 
         <ImageView
             android:id="@+id/game_incorrect_image"
@@ -83,20 +83,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:contentDescription="@string/game_over_image_description"
-            android:src="@drawable/ic_baseline_navigate_before_24"
             android:onClick="@{() -> gameViewModel.prevQuestion()}"
+            android:src="@drawable/ic_baseline_navigate_before_24"
             app:layout_constraintBottom_toTopOf="@+id/game_score_text"
             app:layout_constraintEnd_toStartOf="@+id/game_true_button"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toEndOf="@+id/game_image" />
 
         <ImageButton
             android:id="@+id/game_next_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:contentDescription="@string/game_next_button_image_description"
-            android:src="@drawable/ic_baseline_navigate_next_24"
             android:onClick="@{() -> gameViewModel.nextQuestion()}"
+            android:src="@drawable/ic_baseline_navigate_next_24"
             app:layout_constraintBottom_toTopOf="@+id/game_score_text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -109,16 +109,16 @@
             android:text="@{gameViewModel.scoreText}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toEndOf="@+id/game_image" />
 
         <RadioButton
             android:id="@+id/game_true_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/game_true_button_text"
             android:checked="@{(gameViewModel.attempted &amp;&amp; gameViewModel.answered == true)}"
-            android:onClick="@{() -> gameViewModel.updateQuestion(true)}"
             android:enabled='@{!gameViewModel.attempted}'
+            android:onClick="@{() -> gameViewModel.updateQuestion(true)}"
+            android:text="@string/game_true_button_text"
             app:layout_constraintBottom_toTopOf="@+id/game_score_text"
             app:layout_constraintEnd_toStartOf="@+id/game_false_button"
             app:layout_constraintHorizontal_bias="0.5"
@@ -128,10 +128,10 @@
             android:id="@+id/game_false_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/game_false_button_text"
             android:checked="@{gameViewModel.attempted &amp;&amp; gameViewModel.answered == false}"
-            android:onClick="@{() -> gameViewModel.updateQuestion(false)}"
             android:enabled='@{!gameViewModel.attempted}'
+            android:onClick="@{() -> gameViewModel.updateQuestion(false)}"
+            android:text="@string/game_false_button_text"
             app:layout_constraintBottom_toTopOf="@+id/game_score_text"
             app:layout_constraintEnd_toStartOf="@+id/game_next_button"
             app:layout_constraintHorizontal_bias="0.5"

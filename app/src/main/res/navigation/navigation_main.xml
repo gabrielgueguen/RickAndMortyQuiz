@@ -2,30 +2,66 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main_navigation"
-    app:startDestination="@id/titleFragment">
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/title_destination">
 
     <fragment
-        android:id="@+id/titleFragment"
-        android:name="com.example.rickandmortyquiz.TitleFragment"
-        android:label="fragment_title"
-        tools:layout="@layout/fragment_title" >
+        android:id="@+id/title_destination"
+        android:name="com.example.rickandmortyquiz.screens.title.TitleFragment"
+        android:label="@string/fragment_title_title"
+        tools:layout="@layout/fragment_title">
         <action
-            android:id="@+id/action_titleFragment_to_gameFragment"
-            app:destination="@id/gameFragment" />
+            android:id="@+id/action_title_destination_to_about_destination"
+            app:destination="@id/about_destination"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
+        <action
+            android:id="@+id/action_title_destination_to_rules_destination"
+            app:destination="@id/rules_destination"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
+        <action
+            android:id="@+id/action_title_destination_to_game_destination"
+            app:destination="@id/game_destination"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
     </fragment>
     <fragment
-        android:id="@+id/gameFragment"
-        android:name="com.example.rickandmortyquiz.GameFragment"
-        android:label="fragment_game"
-        tools:layout="@layout/fragment_game" >
+        android:id="@+id/game_destination"
+        android:name="com.example.rickandmortyquiz.screens.game.GameFragment"
+        android:label="@string/fragment_game_title"
+        tools:layout="@layout/fragment_game">
         <action
-            android:id="@+id/action_gameFragment_to_scoreFragment"
-            app:destination="@id/gameOverFragment" />
+            android:id="@+id/action_game_destination_to_game_over_destination"
+            app:destination="@id/game_over_destination"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right"
+            app:popUpTo="@id/game_destination"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
-        android:id="@+id/gameOverFragment"
-        android:name="com.example.rickandmortyquiz.ScoreFragment"
-        android:label="fragment_game_over"
-        tools:layout="@layout/fragment_game_over" />
+        android:id="@+id/game_over_destination"
+        android:name="com.example.rickandmortyquiz.screens.gameOver.GameOverFragment"
+        android:label="@string/fragment_game_over_title"
+        tools:layout="@layout/fragment_game_over" >
+        <argument
+            android:name="gameOverMessage"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/about_destination"
+        android:name="com.example.rickandmortyquiz.screens.about.AboutFragment"
+        android:label="@string/fragment_about_title" />
+    <fragment
+        android:id="@+id/rules_destination"
+        android:name="com.example.rickandmortyquiz.screens.about.RulesFragment"
+        android:label="@string/fragment_rules_title" />
 </navigation>

@@ -12,50 +12,53 @@
             android:id="@+id/title_header"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="100dp"
+            android:layout_marginEnd="100dp"
             android:text="@string/fragment_title_title"
             android:textColor="@color/purple_200"
             android:textSize="@dimen/header_text_size"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/title_header_quiz"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/title_image"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/title_header_quiz"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="100dp"
             android:text="@string/title_page_quiz"
             android:textColor="@color/purple_200"
             android:textSize="@dimen/header_text_size"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/title_image"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/title_image"
             app:layout_constraintTop_toBottomOf="@+id/title_header" />
 
         <ImageView
             android:id="@+id/title_image"
             android:layout_width="0dp"
-            android:layout_height="@dimen/title_image_height"
+            android:layout_height="0dp"
             android:contentDescription="@string/title_image_description"
             android:src="@drawable/rnm01"
-            app:layout_constraintBottom_toTopOf="@+id/title_play_button"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/title_header"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/title_header_quiz" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/title_play_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="100dp"
             android:text="@string/play_button_text"
             android:textColor="@color/teal_200"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/title_image" />
+            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintStart_toEndOf="@+id/title_image"
+            app:layout_constraintTop_toBottomOf="@+id/title_header_quiz" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
